@@ -28,7 +28,7 @@ const theme = {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="move-ease-rent-car-app">
+    <BrowserRouter basename='move-ease-rent-car-app'>
     <Provider >
     <PersistGate loading={null}>
     <ThemeProvider theme={theme}>
