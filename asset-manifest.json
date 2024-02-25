@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/move-easily-rent-car-app/static/js/main.0e1b6b45.js",
+    "main.js": "/move-easily-rent-car-app/static/js/main.3ac5d7bc.js",
     "index.html": "/move-easily-rent-car-app/index.html",
-    "main.0e1b6b45.js.map": "/move-easily-rent-car-app/static/js/main.0e1b6b45.js.map"
+    "main.3ac5d7bc.js.map": "/move-easily-rent-car-app/static/js/main.3ac5d7bc.js.map"
   },
   "entrypoints": [
-    "static/js/main.0e1b6b45.js"
+    "static/js/main.3ac5d7bc.js"
   ]
 }
