@@ -1,7 +1,10 @@
-import { createGlobalStyle } from "styled-components"; 
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 body {
+  display:flex;
+  justify-content: center;
+  align-items: center;
   width: 1440px;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -23,4 +26,4 @@ ul {
 a {
   text-decoration: none;
 }
-`
+`;
