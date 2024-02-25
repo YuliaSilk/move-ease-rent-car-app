@@ -13,11 +13,13 @@ export const App = () => {
   return (
     <>
     <Header>
+     
       <nav>
         <Link to="/">Home</Link>
         <Link to="/catalog">Catalog</Link>
         <Link to="/favorites">Favorite</Link>
       </nav>
+      
     </Header>
 
 

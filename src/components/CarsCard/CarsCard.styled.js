@@ -27,11 +27,6 @@ export const CarImg = styled.img`
     object-fit: cover;
     border-radius:${p => p.theme.radius.m};
     object-position: center;
-
-    /* position: absolute;
-    z-index: 1000;
-    top: 16px;
-    left: 16px; */
     
 `;
 
@@ -59,7 +54,7 @@ export const HeartSvg = styled(HiOutlineHeart)`
     fill: transparent;
     stroke-width: 1.50px;
     stroke: #fff;
-    /* opacity: 80%; */
+    opacity: 80%;
 
     &:focus,
     &.favorite {
@@ -68,7 +63,6 @@ export const HeartSvg = styled(HiOutlineHeart)`
     }
 
 `;
-
 
 export const TitleContainer = styled.div`
     display: flex;
@@ -104,9 +98,9 @@ export const DescriptionContainer = styled.div`
   max-height: 40px;
   overflow: hidden;
   line-height: 1.5;
-  /* text-overflow: ellipsis; */
+  text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  /* -webkit-line-clamp: 2; */
   -webkit-box-orient: vertical;
   margin-bottom: 28px;
 `;
@@ -124,6 +118,7 @@ export const LearnMoreBtn = styled.button`
  font-size: 14px;
  font-weight: 600;
  line-height: 1.4;
+ 
 
  &:hover, :focus {
     background: ${p => p.theme.colors.acent};

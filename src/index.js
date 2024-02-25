@@ -30,7 +30,7 @@ const theme = {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename='move-ease-rent-car-app'>
+    <BrowserRouter basename='move-easily-rent-car-app'>
     <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
     <ThemeProvider theme={theme}>

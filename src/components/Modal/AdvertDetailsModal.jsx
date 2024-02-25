@@ -36,7 +36,6 @@ export const AdvertDetailsModal = ({ advert, closeModal }) => {
         <DescriptionList>
           {rentalCond.map((condition, index) => {
             if (condition.startsWith('Minimum age')) {
-              // Розділяємо рядок на частини, щоб взяти число після "Minimum age: "
               const age = parseInt(condition.split(':')[1]);
               return (
                 <Condition key={index}>
@@ -50,7 +49,7 @@ export const AdvertDetailsModal = ({ advert, closeModal }) => {
           <Condition>Price: {formatNumberWithSpan(rentalPrice)}</Condition>
         </DescriptionList>
       </DescriptionContainer>
-      <Btn as="a" href="tel:+380730000000" type="button">Rental car</Btn>
+      <Btn className="link" as="a" href="tel:+380730000000" type="button">Rental car</Btn>
     </ModalWrapper>
   );
 };

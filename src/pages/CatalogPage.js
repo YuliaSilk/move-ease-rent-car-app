@@ -5,6 +5,7 @@ import {  useDispatch, useSelector } from "react-redux";
 import { fetchAdverts } from "../redux/cars/operations";
 import styled from "styled-components";
 import { HiArrowLongLeft } from "react-icons/hi2";
+import { CarFilterForm } from "../components/SearchBar/CarsFilterForm/CarsFilterForm.jsx";
 
 const ListContainer = styled.ul`
     display: grid;
@@ -12,65 +13,135 @@ const ListContainer = styled.ul`
     gap: 50px 29px;
     margin: 0 auto;   
     padding-top: 70px;
+    margin-bottom: 100px;
 `;
 
 const BtnLoadMore = styled.button`
-    width: 274px;
-    height: 44px;
+  display:flex;
+  text-align: center;
+    width: 100px;
+    height: 24px;
     margin: 0 auto; 
     background: transparent;
     color: ${p => p.theme.colors.main};
     font-size: 16px;
     line-height: 1.2;
-    border-radius: ${p => p.theme.radius.m};
+    border-color: transparent;
+    border-bottom: 1px solid ${p => p.theme.colors.main};
+
+     &:hover, :focus{
+      border-radius: ${p => p.theme.radius.m};
     border-color: ${p => p.theme.colors.main};
+     } 
+   
 `
+const GoBackBtn = styled.button`
+background:transparent;
+border: transparent;
+`
+const GoBackIcon = styled(HiArrowLongLeft)`
+ color: ${p => p.theme.colors.main};
+ width: 50px;
+ &:hover, :focus{
+  color: ${p => p.theme.colors.acent};
+ }
+`
+
 
 export default function CatalogPage() {
     const adverts = useSelector(selectAdverts);
     const dispatch = useDispatch();
     const [currentPage, setCurrentPage] = useState(1);
-    const [hasMorePages, setHasMorePages] = useState(true);
-    const [allAdverts, setAllAdverts] = useState([]);
+    const [filteredAdverts, setFilteredAdverts] = useState([]);
+    const [selectedMake, setSelectedMake] = useState(''); // Додайте state для вибраної марки
 
-    
-   
 
-    
+    // const loadMoreAdverts = () => {
+    //   dispatch(fetchAdverts({ page: currentPage + 1, limit: 12 }));
+    //   setCurrentPage(prevPage => prevPage + 1);
+    // };
+  
+    // useEffect(() => {
+    //   dispatch(fetchAdverts({ page: currentPage, limit: 12 }));
+    // }, [dispatch, currentPage]);
+  
+    // const toGoBack = () => {
+    //   if (currentPage > 1) {
+    //     setCurrentPage(prevPage => prevPage - 1);
+    //   }
+    // };
     const loadMoreAdverts = () => {
-        dispatch(fetchAdverts({ page: currentPage + 1, limit: 12 }));
-        setCurrentPage(prevPage => prevPage + 1);
-      };
+      // Завантажуємо відфільтровані оголошення при завантаженні нових сторінок
+      dispatch(fetchAdverts({ page: currentPage + 1, limit: 12, make: selectedMake }));
+      setCurrentPage((prevPage) => prevPage + 1);
+    };
+  
+    useEffect(() => {
+      // Отримуємо відфільтровані оголошення при виборі марки або завантаженні сторінки
+      const filtered = selectedMake
+        ? adverts.filter((advert) => advert.make === selectedMake)
+        : adverts;
+  
+      setFilteredAdverts(filtered);
+    }, [selectedMake, adverts]);
+  
+    const toGoBack = () => {
+      if (currentPage > 1) {
+        setCurrentPage((prevPage) => prevPage - 1);
+      }
+    };
+  
+    const handleFilter = (make) => {
+      setSelectedMake(make); // Оновлюємо вибрану марку
+    };
     
-      useEffect(() => {
-        dispatch(fetchAdverts({ page: currentPage, limit: 12 }));
-      }, [dispatch, currentPage]);
-    
+    // const handleFilter = (make) => {
+    //   const filtered = adverts.filter((advert) => advert.make === make);
+    //   setFilteredAdverts(filtered);
+    // };
 
-      const handleGoBack = () => {
-        if (currentPage > 1) {
-          setCurrentPage(prevPage => prevPage - 1);
-          setAllAdverts(prevAdverts => prevAdverts.slice(0, -12)); 
-          setHasMorePages(true); 
-        }
-      };
+
+    // const handleFilter = (make) => {
+    //   // Фільтруємо оголошення без використання додаткової змінної
+    //   const filteredAdverts = adverts.filter((advert) => advert.make === make);
+
+
     return <div>
-        <button type="button" onClick={handleGoBack}>
-        <HiArrowLongLeft />
-        </button>
+     
+
+      {currentPage > 1 && (
+        <GoBackBtn type="button" onClick={toGoBack}>
+        <GoBackIcon />
+        </GoBackBtn>
+      )}
+        
+        <CarFilterForm onFilter={handleFilter} />
 
 <ListContainer>
-            {adverts.map((advert) => (
+{filteredAdverts.map((advert) => (
+          <li key={advert.id}>
+            <CarsCard advert={advert} />
+          </li>
+        ))}
+            {/* {adverts.map((advert) => (
                 <li key={advert.id}>
                     <CarsCard advert={advert}/>
                 </li>
-            ))}
-           {adverts.length > 0 && (
+            ))} */}
+        </ListContainer>
+        {filteredAdverts.length > 0 && (
         <BtnLoadMore type="button" onClick={loadMoreAdverts}>
           Load more
         </BtnLoadMore>
       )}
-        </ListContainer>
+        {/* {adverts.length > 0 && (
+        <BtnLoadMore type="button" onClick={loadMoreAdverts}>
+          Load more
+        </BtnLoadMore>
+      )} */}
     </div>
 }
+
+
+
 

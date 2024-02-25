@@ -34,15 +34,9 @@ export const ModalWrapper = styled.div`
     margin-right: -50%;
     transform: translate(-50%, -50%);
     z-index: 10000;
-    /* opacity: 0;
-     transition: opacity 0.3s; */
+ 
     position: fixed;
-    /* top: 0;
-    left: 0; */
    
-  
-     /* overflow: hidden;
-    overflow-y: auto; */
   }
 `;
 
@@ -85,12 +79,6 @@ export const AdvertImg = styled.img`
   margin-bottom: 14px;
 `;
 
-// export const TitleContainer = styled.div`
-//     display: flex;
-//     justify-content: space-between;
-//     margin-bottom: 8px;
-
-// `
 export const AdvTitle = styled.h2`
     font-family: Manrope;
     font-size: 16px;
@@ -109,9 +97,8 @@ export const AdvSubDescrContainer = styled.div`
   max-height: 40px;
   overflow: hidden;
   line-height: 1.5;
-  /* text-overflow: ellipsis; */
+  text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   margin-bottom: 28px;
 `;
@@ -161,8 +148,10 @@ export const DescriptionList = styled.ul`
 display: flex; 
 flex-direction: row;
 justify-content: flex-start;
+justify-content: space-between;
 flex-wrap: wrap;
 gap: 8px;
+padding: 0;
 `
 
 export const Condition = styled.li`
@@ -173,13 +162,14 @@ export const Condition = styled.li`
   justify-content: center;
 
   width: 100%;
-  height: 32px;
+  height: 100%;
   background: #f9f9f9;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
   color: #363535;
   flex: 1; 
+  margin-bottom: 8px;
 
   span{
     
@@ -187,6 +177,7 @@ export const Condition = styled.li`
     color: #3470ff;
   }
 `;
+
 
 export const Btn = styled.button`
  cursor: pointer;
@@ -201,9 +192,10 @@ export const Btn = styled.button`
  font-size: 14px;
  font-weight: 600;
  line-height: 1.4;
-  a {
-    text-decoration: none;
-  }
+ 
+.link {
+       text-decoration: none;
+}
 
  &:hover, :focus {
     background: ${p => p.theme.colors.acent};

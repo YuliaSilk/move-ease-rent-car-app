@@ -32,7 +32,7 @@ export default function FavoritePage()  {
           ))}
         </ListContainer>
       ) : (
-        <pt>No favorites yet. Add some from the Cars page.</pt>
+        <p>No favorites yet. Add some from the Cars page.</p>
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import Modal from 'react-modal';
 import { CarImg, CardContainer, ImgContainer, CarTitle, CarDescription, DescriptionContainer, LearnMoreBtn, TitleContainer, FavBtn, HeartSvg } from "./CarsCard.styled";
 import { AdvertDetailsModal } from "components/Modal/AdvertDetailsModal";
@@ -15,7 +15,8 @@ export const CarsCard = ({ advert: initialAdvert }) => {
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     setIsFavorite(favorites.some((fav) => fav.id === advert.id));
   }, [advert.id]);
-    const onFavoriteToggle = () => {
+
+  const onFavoriteToggle = () => {
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
     const isAlreadyFavorite = favorites.some((fav) => fav.id === advert.id);
@@ -53,8 +54,8 @@ export const CarsCard = ({ advert: initialAdvert }) => {
   
     <CardContainer>
         <ImgContainer>
-        <FavBtn type="button" >
-            <HeartSvg className={isFavorite ? "favorite" : "" } onClick={onFavoriteToggle}/>
+        <FavBtn type="button"  onClick={onFavoriteToggle}>
+            <HeartSvg className={isFavorite ? "favorite" : "" }/>
         </FavBtn>
         <CarImg src={advert.img} alt={advert.model}  />
        
